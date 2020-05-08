@@ -17,7 +17,10 @@ if(!($_COOKIE["year"]>1970)) setcookie("year",$thisyear);
 $year=$_SESSION["year"];
 
 // Routines to process GET and callbacks
-foreach($_GET as $key=>$value) setcookie($key,$value); // make sure permissions are not handled via $_SESSION
+foreach($_GET as $key=>$value) {
+	setcookie($key,$value);
+	$_COOKIE[$key]=$value; // can i do this?
+}
 function goback($reply){
 	$back=$_SESSION["back"];
 	$_SESSION["reply"]=$reply;
