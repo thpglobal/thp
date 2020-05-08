@@ -1,4 +1,7 @@
-# thpclasses
+# thp -- A Revision of thpclasses
+Purpose: make dropdown filter selections sticky via cookies instead of $_SESSION due to timeout problems in GAE 
+It will initially test to thpmel.appspot.com 
+
 PHP classes designed for monitoring and evaluation data by The Hunger Project but is made public for anyone to easily and quickly establish database apps, on any platform but especially on Google App Engine. It's big advantage is the clever way it uses $_SESSSION variables to make dropdown filter selections sticky.
 
 ## Running with just default scripts
