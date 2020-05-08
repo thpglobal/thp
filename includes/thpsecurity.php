@@ -13,7 +13,7 @@ $today=date("Y-m-d");
 $thisyear=date("Y");
 $thismonth=date("m");
 $thisquarter=floor(($thismonth+2)/3);
-if(!($_COOKIE["year"]>1970)) setcookie("year")=$thisyear;
+if(!($_COOKIE["year"]>1970)) setcookie("year",$thisyear);
 $year=$_SESSION["year"];
 
 // Routines to process GET and callbacks
