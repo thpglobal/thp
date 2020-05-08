@@ -3,12 +3,14 @@
 
 /* Sample Menu items */
 $menu=array("Home"=>"/",
+			"Test"=>"test",
+			"Two"=>"two",
+			"Three"=>"three",
 	"Export"=>"export",
 	"Import"=>"upload",
 	"Query"=>"query",
 	"Session"=>"session",
-	"List"=>"list",
-			"Test"=>"test"
+	"List"=>"list"
 	);
 $_SESSION["menu"]=$menu;
 ?>
