@@ -5,6 +5,9 @@ $page=new Page;
 $page->start("Test sticky filters!");
 $filter=new Filter;
 $filter->start();
-$filter->toggle
+echo("<p>Toggle:".$filter->toggle("toggle")."</p>\n");
+echo("<p>Year:".$filter->range("year",2008,$thiyear)."</p>\n");
+$pairs=array("1"=>"Apple","2"=>"Banana","3"=>"Tomato");
+echo("<p>Fruit:".$filter->range("fruit",$pairs)."</p>\n";
 $filter->end();
 $page->end();
