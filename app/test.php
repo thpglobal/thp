@@ -8,7 +8,7 @@ $page=new Page;
 $page->start("Test sticky filters!");
 $filter=new Filter;
 $filter->start();
-$fruit=$filter->pairs("fruit",$pairs)
+$fruit=$filter->pairs("fruit",$pairs);
 $year=$filter->range("year",2008,2030);
 $toggle=$filter->toggle("toggle");
 echo("<p>Toggle: $toggle</p>\n");
