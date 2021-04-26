@@ -55,24 +55,28 @@ class Page {
 		}
 	}
 	
-	public function start_light($title="THP",$lang="en") { // no menu, no icons, no datatable, no extras
-		foreach($_GET as $key=>$value) $_SESSION[$key]=$value;
-		$this->time_start=microtime(true);
-		echo("<!DOCTYPE html>\n<html lang=$lang>\n<head>\n");
-		echo("<meta name=viewport content='width=device-width, initial-scale=1'>\n");
-		echo("<title>$title</title>\n");
-		echo("<meta name='description' content='$title built on opensource github.com/thpglobal/thpclasses'/>\n");
-		echo("<link rel='shortcut icon' href='/static/favicon.png'>\n");
-		echo("<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css'>\n");
-		echo("<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive.css'>\n");
-		echo("<link rel='stylesheet' href='https://storage.googleapis.com/thp/thp.css'>\n");
-		echo("<meta charset='utf-8'>\n");
-        echo("</head>\n<body>\n");
-        echo("<div class=container>\n");
-		echo("<h1>$title</h1>\n");
-	}
+public function start_light($title="THP",$lang="en") { // no menu, no icons, no datatable, no extras
+	$this->time_start=microtime(true);
+?>
+<!DOCTYPE html>\n<html lang=<?php echo $lang;?> >
+<head>
+	<meta name=viewport content='width=device-width, initial-scale=1'>
+	<title><?php echo $title?></title>
+	<meta name='description' content='$title built on opensource github.com/thpglobal/thpclasses'/>
+	<link rel='shortcut icon' href='/static/favicon.png'>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+	<meta charset='utf-8'>
+</head>
+<body>
+	<div class="container">
+	<h1><?php $title?></h1>
+	<?php
+	} // end start_light
+
 
 	public function start($title="THP",$lang="en"){
+		
 		$_SESSION["datatable"]=$this->datatable; // save for access by Table class
 		foreach($_GET as $key=>$value) $_SESSION[$key]=$value;
 		$this->time_start=microtime(true);

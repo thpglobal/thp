@@ -23,7 +23,7 @@ class Chart{
 		echo("var ChartOptions = {".$this->options."};\n");
 		echo("var RadarOptions = { scale: { ticks: { beginAtZero: true } } };\n"); // different for radar charts
 		echo("</script>\n");
-		echo("<div class=pure-g>\n"); // open a grid of sections.
+		echo("<div class=row>\n"); // open a grid of sections.
 	}
 
 	public function end() { echo("</div>\n"); } // close the grid

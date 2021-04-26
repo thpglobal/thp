@@ -17,7 +17,7 @@ class Filter {
     	}
     }
     public function start($db=NULL){
-        echo("<div class=pure-g>\n");
+        echo("<div class=row>\n");
 		$this->db=$db;
     }
     public function end(){

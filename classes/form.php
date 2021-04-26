@@ -20,7 +20,7 @@ class Form {
 	}
 	public function end($submit="Save Data"){
 		echo("\n\n<div class='pure-controls'>".
-		'<button type="submit" class="pure-button pure-button-primary">'.$submit.'</button>'.
+		'<button type="submit" class="btn btn-primary">'.$submit.'</button>'.
 		"</div>\n</fieldset>\n</form>\n");
 	}
 	public function hidden($array) {
