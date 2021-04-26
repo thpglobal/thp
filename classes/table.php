@@ -31,7 +31,7 @@ class Table { // These are public for now but may eventually be private with set
 	}
     
     public function info($definition){ // return a string function with info symbol and title
-	    if($definition>'') return "<span title='$definition' class='fa fa-info-circle'></span>";
+	    if($definition>'') return "<span title='$definition' class='bi bi-info-circle'></span>";
     }
 	public function rowspan($n=2){ // set number of columns to include in rowspan
 		$this->rowspan=$n;

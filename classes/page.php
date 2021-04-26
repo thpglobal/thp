@@ -39,7 +39,7 @@ class Page {
 			foreach($menu as $key=>$item){
 				if(is_array($item) ){
 					echo("<div class=dropdown>\n");
-					echo("\t<button class=dropbtn>$key<i class='fa fa-caret-down'></i></button>\n"); 
+					echo("\t<button class=dropbtn>$key<i class='bi bi-caret-down'></i></button>\n"); 
 					echo("\t<div class=dropdown-content>\n");
 					foreach($item as $b=>$a) echo("\t\t<a href='$a'>$b</a>\n");
 					echo("\t</div>\n</div>\n");
@@ -76,67 +76,28 @@ public function start_light($title="THP",$lang="en") { // no menu, no icons, no 
 
 
 	public function start($title="THP",$lang="en"){
-		
-		$_SESSION["datatable"]=$this->datatable; // save for access by Table class
-		foreach($_GET as $key=>$value) $_SESSION[$key]=$value;
 		$this->time_start=microtime(true);
-		echo("<!DOCTYPE html>\n<html lang=$lang>\n<head>\n");
-		echo("<meta name=viewport content='width=device-width, initial-scale=1'>\n");
-		echo("<title>$title</title>\n");
-		echo("<meta name='description' content='$title built on opensource github.com/thpglobal/thpclasses'/>\n");
-		echo("<link rel='shortcut icon' href='/static/favicon.png'>\n");
-		echo("<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css'>\n");
-		echo("<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive.css'>\n");
-		echo("<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap' rel='stylesheet'>");
-		echo("<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>\n");
-		if(file_exists($_SERVER['DOCUMENT_ROOT']."/static/pure.thp.css")) 
-			$this->css[0]="/static/pure.thp.css";
-		if(!sizeof($this->css)) Die("</head><body>Error - there must be at least one $css entry</body></html>");
-		foreach($this->css as $css) echo("<link rel='stylesheet' href='$css'>\n");
-		if($this->datatable=="1"){ // Additional setup for using DataTables
-?>
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.19/css/jquery.dataTables.min.css'>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script> 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.19/js/jquery.dataTables.min.js"></script>
-<script>
-$(document).ready(function() {
-    // Setup - add a text input to each footer cell
-    $('#datatable tfoot th').each( function () {
-        var title = $(this).text();
-        $(this).html( '<input type="text" size=4 placeholder="'+title+'" />' );
-    } );
- 
-    // DataTable
-    var table = $('#datatable').DataTable( {
-        "order": [[ 0, "desc" ]]
-    });
- 
-    // Apply the search
-    table.columns().every( function () {
-        var that = this;
- 
-        $( 'input', this.footer() ).on( 'keyup change', function () {
-            if ( that.search() !== this.value ) {
-                that
-                    .search( this.value )
-                    .draw();
-            }
-        } );
-    } );
-} );
-</script>
-<?php
-        }
-        echo("<meta charset='utf-8'>\n");
-        echo("</head>\n<body>\n");
+		?>
+		<!DOCTYPE html>\n<html lang=<?php echo $lang;?> >
+		<head>
+			<meta name=viewport content='width=device-width, initial-scale=1'>
+			<title><?php echo $title?></title>
+			<meta name='description' content='$title built on opensource github.com/thpglobal/thpclasses'/>
+			<link rel='shortcut icon' href='/static/favicon.png'>
+			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+			<meta charset='utf-8'>
+		</head>
+		<body>
+		<?php
 		$this->menu();
         echo("<div class=container>\n");
 		echo($this->preh1); //used for dashboard colorbar or whatever
         echo("<h1>$title <span class=hidden-print>");
-        //include("../includes/translate.php");
 		foreach($this->links as $key=>$link) {
             $hint=$this->hints[$key];
-            echo("<a href=$link class='fa fa-$key' title='$hint'></a>\n");
+            echo("<a href=$link class='bi bi-$key' title='$hint'></a>\n");
         }
         echo($this->appendTitle."</span></h1>\n");
 		$reply=$_SESSION["reply"];
@@ -165,7 +126,7 @@ $(document).ready(function() {
 		$now=$_SESSION[$name];
 		if($now<>'off') $now='on'; // default is ON
 		$then=($now=='on' ? 'off' : 'on');
-		$this->appendTitle.="<a class='fa fa-toggle-$now' href='?$name=$then'></a> ";
+		$this->appendTitle.="<a class='bi bi-toggle-$now' href='?$name=$then'></a> ";
 		$this->appendTitle .= ($now=='on' ? $on_msg : $off_msg) ;
 	}
 	

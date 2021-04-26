@@ -31,7 +31,7 @@ class Filter {
 		$now=$_COOKIE[$name];
 		if($now<>'off') $now='on';
 		$then=($now=='on' ? 'off' : 'on');
-		echo("<div class='pure-u-1 pure-u-md-1-4'>$name: <a class='fa fa-3x fa-toggle-$now' href='?$name=$then'></a>");
+		echo("<div class='pure-u-1 pure-u-md-1-4'>$name: <a class='bi bi-3x fa-toggle-$now' href='?$name=$then'></a>");
 		echo( ($now=='on' ? $on_msg : $off_msg)."</div>");
 		return $now;
 	}
@@ -41,7 +41,7 @@ class Filter {
 		if($now<>'off') $now='on';
 		$then=($now=='on' ? 'off' : 'on');
 		echo("<div class='pure-u-1 pure-u-md-1-4'>$name: ". ($this->showOffLabel ? $off_msg : '') . 
-			"<a class='fa fa-3x fa-toggle-$now' href='?$name=$then'></a>");
+			"<a class='bi bi-3x fa-toggle-$now' href='?$name=$then'></a>");
 		echo($on_msg."</div>");
 		return $now;
 	}
