@@ -46,10 +46,10 @@ class Page {
 foreach($menu as $key=>$item){
 	if(is_array($item) ){
 		echo('<li class="nav-item dropdown">');
-        echo('<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">');
-		echo(translate($key)."</a>\n");
+        echo('<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">');
+		echo($key."</a>\n");
 		echo('<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">');
-		foreach($item as $b=>$a) echo("\t<li><a class='dropdown-item' href='$a'>".translate($b)."</a></li>\n");
+		foreach($item as $b=>$a) echo("\t<li><a class='dropdown-item' href='$a'>".$b."</a></li>\n");
 		echo("</ul>\n</li>\n");
 	}else{
 		echo("<li class='nav-item'><a class='nav-link' href='$item'>$key</a></li>\n");
@@ -92,9 +92,9 @@ public function start_light($title="THP",$lang="en") { // no menu, no icons, no 
 			<title><?php echo $title?></title>
 			<meta name='description' content='$title built on opensource github.com/thpglobal/thpclasses'/>
 			<link rel='shortcut icon' href='/static/favicon.png'>
-			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
-			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 			<meta charset='utf-8'>
 		</head>
 		<body>
@@ -124,7 +124,6 @@ public function start_light($title="THP",$lang="en") { // no menu, no icons, no 
 			</script> 
 		<script type='text/javascript' src='//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'></script>");
 	
-	
 	}
 	public function icon($type="edit",$link="/edit",$hint="Edit this record"){
 		$this->links[$type]=$link;
@@ -146,5 +145,3 @@ public function start_light($title="THP",$lang="en") { // no menu, no icons, no 
     }
 }
 // END CLASS PAGE
-
-?>
