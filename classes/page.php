@@ -37,11 +37,11 @@ class Page {
 		if(isset($_SESSION["menu"]) and sizeof($menu)>0) { 
 		?>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 	<?php
 foreach($menu as $key=>$item){
 	if(is_array($item) ){
@@ -63,10 +63,12 @@ foreach($menu as $key=>$item){
 <?php
 		}
 }	
+
 public function start_light($title="THP",$lang="en") { // no menu, no icons, no datatable, no extras
 	$this->time_start=microtime(true);
 ?>
-<!DOCTYPE html>\n<html lang=<?php echo $lang;?> >
+<!DOCTYPE html>
+<html lang=<?php echo $lang;?> >
 <head>
 	<meta name=viewport content='width=device-width, initial-scale=1'>
 	<title><?php echo $title?></title>
@@ -86,11 +88,12 @@ public function start_light($title="THP",$lang="en") { // no menu, no icons, no 
 	public function start($title="THP",$lang="en"){
 		$this->time_start=microtime(true);
 		?>
-		<!DOCTYPE html>\n<html lang=<?php echo $lang;?> >
+		<!DOCTYPE html>
+		<html lang=<?php echo $lang;?> >
 		<head>
 			<meta name=viewport content='width=device-width, initial-scale=1'>
 			<title><?php echo $title?></title>
-			<meta name='description' content='$title built on opensource github.com/thpglobal/thpclasses'/>
+			<meta name='description' content='Built on opensource github.com/thpglobal/thp'/>
 			<link rel='shortcut icon' href='/static/favicon.png'>
 			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
@@ -101,7 +104,7 @@ public function start_light($title="THP",$lang="en") { // no menu, no icons, no 
 		<?php
 		$this->menu();
         echo("<div class=container>\n");
-		echo($this->preh1); //used for dashboard colorbar or whatever
+//		echo($this->preh1); //used for dashboard colorbar or whatever
         echo("<h1>$title <span class=hidden-print>");
 		foreach($this->links as $key=>$link) {
             $hint=$this->hints[$key];
