@@ -35,26 +35,34 @@ class Page {
 	public function menu() { // new responsive version
 		$menu=$_SESSION["menu"];
 		if(isset($_SESSION["menu"]) and sizeof($menu)>0) { 
-			echo("<div class='topnav hidden-print' id=myTopnav>\n");
-			foreach($menu as $key=>$item){
-				if(is_array($item) ){
-					echo("<div class=dropdown>\n");
-					echo("\t<button class=dropbtn>$key<i class='bi bi-caret-down'></i></button>\n"); 
-					echo("\t<div class=dropdown-content>\n");
-					foreach($item as $b=>$a) echo("\t\t<a href='$a'>$b</a>\n");
-					echo("\t</div>\n</div>\n");
-				} else echo("\t<a href='$item'>$key</a>\n");
-			}
-			echo('<a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>');
-			echo("\n</div>\n");
-			echo("<script>\n");
-			echo("function myFunction() {\n");
-			echo('  var x = document.getElementById("myTopnav");'."\n");
-			echo('  if (x.className === "topnav") { x.className += " responsive"; } else { x.className = "topnav"; }'."\n");
-			echo("}\n</script>\n");
-		}
+		?>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+	<?php
+foreach($menu as $key=>$item){
+	if(is_array($item) ){
+		echo('<li class="nav-item dropdown">');
+        echo('<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">');
+		echo(translate($key)."</a>\n");
+		echo('<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">');
+		foreach($item as $b=>$a) echo("\t<li><a class='dropdown-item' href='$a'>".translate($b)."</a></li>\n");
+		echo("</ul>\n</li>\n");
+	}else{
+		echo("<li class='nav-item'><a class='nav-link' href='$item'>$key</a></li>\n");
 	}
-	
+}
+?>
+	</ul>
+	</div><!-- end collapsible bits -->
+	</nav>
+</div><!-- end container -->
+<?php
+		}
+}	
 public function start_light($title="THP",$lang="en") { // no menu, no icons, no datatable, no extras
 	$this->time_start=microtime(true);
 ?>
