@@ -58,9 +58,10 @@ class Filter {
 	}
 	public function pairs($name,$array,$all='(All)'){
 		if (!isset($_COOKIE[$name])) $_COOKIE[$name] = 0;
-		echo "<form class='pure-form pure-u-1 pure-u-md-1-".$this->width."'>" .
+		$bswidth=floor(12/$this->width);
+		echo "<form class='col-md-".$bswidth."'>" .
 			"<div class='form-group'><label for='$name'>".ucfirst($name).":&nbsp;</label>" .
-			"<select id='$name' name=$name onchange=this.form.submit(); >\n";
+			"<select class='form-select' id='$name' name=$name onchange=this.form.submit(); >\n";
 		if($all>'') echo("<option value=0>$all\n");
 		foreach($array as $key=>$value) { // default to first if required
 //			if(($all=='') and ($_COOKIE[$name]==0)) $_COOKIE[$name]=$key;
@@ -73,4 +74,3 @@ class Filter {
 	}	
 }
 // END CLASS FILTER
-?>

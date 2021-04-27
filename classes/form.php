@@ -2,7 +2,7 @@
 // CLASS FORM - EDIT A RECORD
 class Form {
 	protected $db;
-	private $div1="<div class='pure-control-group'>\n<label for=";
+	private $div1="<div class='row mb-3'>\n<label class='col-sm-2 col-form-label' for=";
 	public $data=array();
 	public $hidden=array("id");
 	public $ignore=array();
@@ -14,7 +14,7 @@ class Form {
 	
 	public function start($db=NULL,$action="/update"){
 		$this->db=$db; // reference database connection
-		echo("<form class='pure-form pure-form-aligned' method='post'");
+		echo("<form method='post'");
 		if($action>'') echo (" action='$action'");
 		echo(">\n<Fieldset>\n");
 	}
@@ -67,9 +67,9 @@ class Form {
 	public function text($name,$rename='',$minlength=0){
 		$label=($rename>'' ? $rename : $name);
 		echo($this->div1."'$name'>".ucwords($label).":</label>");
-		echo("<input type=text name='$name' value='".$this->data[$name]."'");
+		echo("<div class='col-sm-10'>\n<input class='form-control' type=text name='$name' value='".$this->data[$name]."'");
 		if($minlength>0) echo(' required><span class=status></span');
-		echo("></div>\n");
+		echo("></div></div>\n");
 	}
 	public function date($name,$required=0){ // This restricts daterange to mindate/maxdate if set
 		if(!isset($_SeSSION["lastdate"])) $_SESSION["lastdate"]=date("Y-m-d");
@@ -154,4 +154,3 @@ class Form {
 		}
 	}
 } // END OF CLASS FORM
-?>

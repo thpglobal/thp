@@ -374,10 +374,10 @@ class Table { // These are public for now but may eventually be private with set
 	public function thead($jstart=1){
 		$row=$this->contents[0];
 		$ncols=sizeof($row);
-		$striped=($nclasses>0 ? "" : "pure-table-striped");
+		$striped=($nclasses>0 ? "" : "table-striped");
 		$tid=($_SESSION["datatable"] ? "id='datatable'" : "");
 		$sticky=($_SESSION["datatable"] ? "" : "style='position: sticky; top: -1px;'");
-		echo("<table $tid class='pure-table $striped pure-table-bordered'>\n<thead>\n");
+		echo("<table $tid class='table $striped table-bordered'>\n<thead class=table-primary>\n");
 		if(strlen($this->extraheader)>0) echo($this->extraheader);
 		for($j=$jstart;$j<$ncols;$j++){
             $infoIndex=($this->infoMatchWithID) ? $row[$j-1].'_'.$row[$j] : $row[$j];

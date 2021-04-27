@@ -4,8 +4,8 @@
 /* Sample Menu items */
 $menu=["Home"=>"/",
 	"Test Dropdown"=>["Test 1"=>"1","Test 2"=>"2","Test 3"=>"3"],
-	"Countries"=>"countries",
-	"Three"=>"three",
+	"Table Demo"=>"demo",
+	"Filter"=>"filter",
 	"Export"=>"export",
 	"Import"=>"upload",
 	"Query"=>"query",
