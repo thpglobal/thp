@@ -1,5 +1,5 @@
 # for use on Google App Engine Standard Environment
-runtime: php72
+runtime: php74
 handlers:
 - url: /favicon\.ico
   static_files: favicon.ico
